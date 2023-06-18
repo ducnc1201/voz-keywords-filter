@@ -1,6 +1,7 @@
 class KeywordManager:
     def __init__(self):
         self.lowercase_keywords = []
+        self.get_keywords_from_file()
         self.very_first_letter_uppercase_keywords = [keyword[0].upper() + keyword[1:] for keyword in self.lowercase_keywords]
         self.first_letter_uppercase_keywords = [keyword.title() for keyword in self.lowercase_keywords]
         self.all_uppercase_keywords = [keyword.upper() for keyword in self.lowercase_keywords]
@@ -11,7 +12,7 @@ class KeywordManager:
 
     # get keywords from filter/keyword.txt, then append them to self.lowercase_keywords
     def get_keywords_from_file(self):
-        with open('filter/keyword.txt', 'r') as file:
+        with open('filter/keyword.txt', 'r', encoding='utf8') as file:
             for line in file:
                 self.lowercase_keywords.append(line.strip())
 
