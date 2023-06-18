@@ -1,6 +1,6 @@
 class KeywordManager:
     def __init__(self):
-        self.lowercase_keywords = ['công an', 'quân đội', 'thủ tướng', 'cccd']
+        self.lowercase_keywords = []
         self.very_first_letter_uppercase_keywords = [keyword[0].upper() + keyword[1:] for keyword in self.lowercase_keywords]
         self.first_letter_uppercase_keywords = [keyword.title() for keyword in self.lowercase_keywords]
         self.all_uppercase_keywords = [keyword.upper() for keyword in self.lowercase_keywords]
@@ -8,6 +8,12 @@ class KeywordManager:
 
         self.bbcode_tag_patterns = [r'\[URL=\'(.*?)\'\]|\[/URL\]']
         self.regex_patterns = [r'(?i)(\b\w*)bca(\w*\b)']
+
+    # get keywords from filter/keyword.txt, then append them to self.lowercase_keywords
+    def get_keywords_from_file(self):
+        with open('filter/keyword.txt', 'r') as file:
+            for line in file:
+                self.lowercase_keywords.append(line.strip())
 
     def format_keywords(self):
         formatted_keywords = []
