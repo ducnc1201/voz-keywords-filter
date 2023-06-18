@@ -161,3 +161,4 @@ cython_debug/
 
 # Notebook stuff (for debug and testing)
 .ipynb
+*.ipynb
