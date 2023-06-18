@@ -1,4 +1,3 @@
-import re
 import sys
 from ClipboardManager import ClipboardManager
 from ContentProcessor import ContentProcessor
