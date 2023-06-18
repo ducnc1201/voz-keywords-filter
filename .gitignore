@@ -160,7 +160,6 @@ cython_debug/
 #.idea/
 
 # Notebook stuff (for debug and testing)
-.ipynb
 *.ipynb
 
 # Directories used by Visual Studio to store history of open files
