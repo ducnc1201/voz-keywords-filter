@@ -19,13 +19,13 @@ Follow these steps to use the script:
 
   ![Alt text](img/toggle_bbcode1.png)
 
-  ![Alt text](img/more_options.png)
-
 - If necessary, click the "More options..." button to reveal it due to screen DPI.
+
+  ![Alt text](img/more_options.png)
 
   ![Alt text](img/toggle_bbcode2.png)
 
-- Copy that BBcode.
+- Copy the BBcode on the editor.
 
 3. Run the remover.py script.
 
