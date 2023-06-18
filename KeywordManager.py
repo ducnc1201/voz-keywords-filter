@@ -10,7 +10,6 @@ class KeywordManager:
         self.bbcode_tag_patterns = [r'\[URL=\'(.*?)\'\]|\[/URL\]']
         self.regex_patterns = [r'(?i)(\b\w*)bca(\w*\b)']
 
-    # get keywords from filter/keyword.txt, then append them to self.lowercase_keywords
     def get_keywords_from_file(self):
         with open('filter/keyword.txt', 'r', encoding='utf8') as file:
             for line in file:
