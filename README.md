@@ -1,2 +1,2 @@
-# bbcode-url-tag-remover
-URL tag remover script for BBcode
+# Voz keywords filter
+URL tag remover and keywords filter script for Voz.
