@@ -13,6 +13,20 @@ Follow these steps to use the script:
 1. Check for dependencies:
 - Linux or MacOS users generally don't need any additional packages, as they work well with UTF8 encoding.
 - Windows users, on the other hand, need to install pywin32.
-2. Run the remover.py script.
 
-That's it! The script will perform the necessary URL tag removal and keyword filtering for you.
+2. Copy the BBcode
+- Locate the "Toggle BB code" button on the editor toolbar.
+
+  ![Alt text](img/toggle_bbcode1.png)
+
+  ![Alt text](img/more_options.png)
+
+- If necessary, click the "More options..." button to reveal it due to screen DPI.
+
+  ![Alt text](img/toggle_bbcode2.png)
+
+- Copy that BBcode.
+
+3. Run the remover.py script.
+
+That's it! The script will remove the URL tags and filter the keywords for you. Now you can paste the filtered content into the forum's editor without worrying about being flagged.
