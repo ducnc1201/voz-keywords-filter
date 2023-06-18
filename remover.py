@@ -35,11 +35,41 @@ def remove_urls_from_clipboard():
             print("An error occurred while accessing the clipboard:", str(e))
             return
 
-    # Define the regex pattern
-    pattern = r'\[URL=\'(.*?)\'\]|\[/URL\]'
+    # Define the regex and keywords pattern
+    bbcode_tag = [r'\[URL=\'(.*?)\'\]|\[/URL\]']
 
-    # Remove URLs and closing tags
-    content = re.sub(pattern, '', content)
+    regex = [r'(?i)(\b\w*)bca(\w*\b)']
+
+    # Define the keywords
+    lowercase_keywords = ['công an', 'quân đội', 'thủ tướng']
+    # make the very first letter of the keyword uppercase
+    very_first_letter_uppercase_keywords = [keyword[0].upper() + keyword[1:] for keyword in lowercase_keywords]
+    # make the first letter of the keyword uppercase
+    first_letter_uppercase_keywords = [keyword.title() for keyword in lowercase_keywords]
+    # make the keyword all uppercase
+    all_uppercase_keywords = [keyword.upper() for keyword in lowercase_keywords]
+    #append the keywords together
+    keywords = lowercase_keywords + very_first_letter_uppercase_keywords + first_letter_uppercase_keywords + all_uppercase_keywords
+
+    # Remove some BBcode tags, and format keywords
+    # URL tags removal
+    for pattern in bbcode_tag:
+        content = re.sub(pattern, '', content)
+
+    # Remove the regex
+    for r in regex:
+        content = re.sub(r, r'\1*\2', content)
+
+    for keyword in keywords:
+        words = keyword.split()  # Split the keyword into individual words
+        formatted_words = []
+        for word in words:
+            formatted_word = word[0]+ '*'
+            formatted_words.append(formatted_word)
+        formatted_keyword = ' '.join(formatted_words)
+
+        pattern = r'\b' + re.escape(keyword) + r'\b'
+        content = re.sub(pattern, formatted_keyword, content)
 
     # Update the clipboard content based on the platform
     if sys.platform == 'win32':
@@ -48,7 +78,7 @@ def remove_urls_from_clipboard():
             win32clipboard.EmptyClipboard()
             win32clipboard.SetClipboardData(win32clipboard.CF_UNICODETEXT, content)  # No need to encode
             win32clipboard.CloseClipboard()
-            print("URLs removed and clipboard updated successfully.")
+            print("URLs and keywords removed, clipboard updated successfully")
         except Exception as e:
             print("An error occurred while updating the clipboard on Windows:", str(e))
     else:
@@ -58,7 +88,7 @@ def remove_urls_from_clipboard():
             if result.returncode != 0:
                 print("An error occurred while updating the clipboard.")
                 return
-            print("URLs removed and clipboard updated successfully.")
+            print("URLs and keywords removed, clipboard updated successfully")
         except Exception as e:
             print("An error occurred while updating the clipboard:", str(e))
 
