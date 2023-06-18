@@ -2,7 +2,7 @@
 This is a script designed to remove URL tags and filter keywords on Vozforums.
 
 ## Why?
-The filtering system on the forum can be frustrating. If your post contains certain words that match their rules (e.g., "công an" or any word with "BCA" in it), it will require approval. To address this issue, I created a filter script to automate the process.
+Filtering keywords on the forum can be quite frustrating. If your post contains certain words that match the forum's rules (such as "công an" or any words containing "BCA" like "webcache" or "webcam"), it will require approval before being visible. To address this issue, I created a filter script that aims to simplify the process.
 
 ## How it works?
 The script reads the content from the clipboard, identifies keywords or regular expressions, and filters them out.
