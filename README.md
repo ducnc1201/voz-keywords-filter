@@ -11,13 +11,10 @@ The script reads the content from the clipboard, identifies keywords or regular 
 Follow these steps to use the script:
 
 1. Check for dependencies:
-
-- The script requires the clipboard package. Install it by using:
-
-  ```pip install clipboard```
+- Linux or MacOS users generally don't need any additional packages, as they work well with UTF8 encoding.
+- Windows users, on the other hand, need to install pywin32.
 
 2. Copy the BBcode
-
 - Locate the "Toggle BB code" button on the editor toolbar.
 
   ![Alt text](img/toggle_bbcode1.png)
