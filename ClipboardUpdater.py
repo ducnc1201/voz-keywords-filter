@@ -1,4 +1,5 @@
 import sys
+import subprocess
 from ClipboardManager import ClipboardManager
 from ContentProcessor import ContentProcessor
 
