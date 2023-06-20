@@ -3,6 +3,10 @@
 <head>
     <title>Voz Keyword Processing</title>
     <script>
+        function insertSeparator(word) {
+            return [...word].join('᠎');
+        }
+
         function processText() {
             let inputText = document.getElementById("inputText").value;
             let outputText = document.getElementById("outputText");
@@ -40,10 +44,9 @@
                 'UKRAINE',
                 // add more keywords here
             ];
-            let repl;
             for (let kw of kws) {
-                repl = kw[0] + '᠎' + kw.substr(1);
-                str = str.replace(new RegExp(kw, 'i'), repl);
+                let repl = insertSeparator(kw);
+                str = str.replace(new RegExp(kw, 'g'), repl);
             }
 
             outputText.value = str;
