@@ -2,6 +2,45 @@
 <html>
 <head>
     <title>Voz Keyword Processing</title>
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        .btn-container {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .btn-container button {
+            margin-right: 10px;
+        }
+
+        @media (max-width: 480px) {
+            textarea {
+                height: 100px;
+            }
+        }
+    </style>
     <script>
         function insertSeparator(word) {
             return [...word].join('᠎');
@@ -61,12 +100,14 @@
     </script>
 </head>
 <body>
-    <h1>Keyword Processing</h1>
+   <h1>Keyword Processing</h1>
     <label for="inputText">Enter text:</label>
     <textarea id="inputText" rows="4" cols="50" oninput="processText()"></textarea>
     <br>
     <label for="outputText">Output:</label>
-    <textarea id="outputText" rows="4" cols="50"></textarea>
-    <button onclick="copyOutput()">Copy</button>
+    <textarea id="outputText" rows="4" cols="50" readonly></textarea>
+    <div class="btn-container">
+        <button onclick="copyOutput()">Copy</button>
+    </div>
 </body>
 </html>
