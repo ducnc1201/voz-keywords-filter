@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Keyword Processing</title>
+    <script>
+        function processText() {
+            let inputText = document.getElementById("inputText").value;
+            let outputText = document.getElementById("outputText");
+
+            let str = inputText;
+            const kws = [
+                'công an',
+                'quân đội',
+                'thủ tướng',
+                'hiếp dâm',
+                'nga',
+                'ukraine'
+                // add more keywords here
+            ];
+            let repl;
+            for (let kw of kws) {
+                repl = kw[0] + '᠎' + kw.substr(1);
+                str = str.replace(new RegExp(kw, 'i'), repl);
+            }
+
+            outputText.value = str;
+        }
+
+        function copyOutput() {
+            let outputText = document.getElementById("outputText");
+            outputText.select();
+            document.execCommand("copy");
+            alert("Output copied to clipboard!");
+        }
+    </script>
+</head>
+<body>
+    <h1>Keyword Processing</h1>
+    <label for="inputText">Enter text:</label>
+    <textarea id="inputText" rows="4" cols="50"></textarea>
+    <button onclick="processText()">Process</button>
+    <br>
+    <label for="outputText">Output:</label>
+    <textarea id="outputText" rows="4" cols="50"></textarea>
+    <button onclick="copyOutput()">Copy</button>
+</body>
+</html>

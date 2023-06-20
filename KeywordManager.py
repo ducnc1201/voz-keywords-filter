@@ -18,9 +18,8 @@ class KeywordManager:
     def format_keywords(self):
         formatted_keywords = []
         for keyword in self.keywords:
-            words = keyword.split()
-            formatted_words = [word[0] + '*' for word in words]
-            formatted_keyword = ' '.join(formatted_words)
+            formatted_words = (word + '᠎' for word in keyword)
+            formatted_keyword = ''.join(formatted_words)
             formatted_keywords.append(formatted_keyword)
         return formatted_keywords
 
