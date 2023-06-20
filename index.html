@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Keyword Processing</title>
+    <title>Voz Keyword Processing</title>
     <script>
         function processText() {
             let inputText = document.getElementById("inputText").value;
             let outputText = document.getElementById("outputText");
 
+            // Remove [URL='...'] and [/URL] matches
+            const regex = /\[URL='(.*?)'\]|\[\/URL\]/g;
+            inputText = inputText.replace(regex, '');
+
             let str = inputText;
+
+            // Find words containing 'bca' and replace 'bca' with '***'
+            const wordRegex = /\b\w*bca\w*\b/gi;
+            str = str.replace(wordRegex, function(match) {
+                return match.replace(/bca/gi, '***');
+            });
+
             const kws = [
                 'công an',
+                'Công an',
+                'CÔNG AN',
                 'quân đội',
+                'Quân đội',
+                'QUÂN ĐỘI',
                 'thủ tướng',
+                'Thủ tướng',
+                'THỦ TƯỚNG',
                 'hiếp dâm',
+                'Hiếp dâm',
+                'HIẾP DÂM',
                 'nga',
-                'ukraine'
+                'Nga',
+                'NGA',
+                'ukraine',
+                'Ukraine',
+                'UKRAINE',
                 // add more keywords here
             ];
             let repl;
@@ -30,7 +53,7 @@
             let outputText = document.getElementById("outputText");
             outputText.select();
             document.execCommand("copy");
-            alert("Output copied to clipboard!");
+            //alert("Output copied to clipboard!");
         }
     </script>
 </head>
