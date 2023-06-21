@@ -57,7 +57,7 @@
     </style>
     <script>
         function insertSeparator(word) {
-            return [...word].join('᠎');
+            return [...word].join('឴');
         }
 
         function processText() {
@@ -94,7 +94,7 @@
             for (let kw of kws) {
                 let repl = insertSeparator(kw);
                 // replace all occurrences of kw with repl with exact match
-                const kwRegex = new RegExp('\\b' + kw + '\\b', 'g');
+                const kwRegex = new RegExp(kw, 'g');
                 str = str.replace(kwRegex, repl);
             }
 
