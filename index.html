@@ -99,7 +99,9 @@
             ];
             for (let kw of kws) {
                 let repl = insertSeparator(kw);
-                str = str.replace(new RegExp(kw, 'g'), repl);
+                // replace all occurrences of kw with repl with exact match
+                const kwRegex = new RegExp('\\b' + kw + '\\b', 'g');
+                str = str.replace(kwRegex, repl);
             }
 
             outputText.value = str;
