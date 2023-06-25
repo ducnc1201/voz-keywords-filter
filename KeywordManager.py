@@ -11,7 +11,7 @@ class KeywordManager:
         self.regex_patterns = [r'(?i)(\b\w*)bca(\w*\b)']
 
     def get_keywords_from_file(self):
-        with open('filter/keyword.txt', 'r', encoding='utf8') as file:
+        with open('filter/keywords.txt', 'r', encoding='utf8') as file:
             for line in file:
                 self.lowercase_keywords.append(line.strip())
 
