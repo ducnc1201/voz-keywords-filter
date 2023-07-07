@@ -7,7 +7,7 @@ class KeywordManager:
         self.all_uppercase_keywords = [keyword.upper() for keyword in self.lowercase_keywords]
         self.keywords = self.lowercase_keywords + self.very_first_letter_uppercase_keywords + self.first_letter_uppercase_keywords + self.all_uppercase_keywords
 
-        self.bbcode_tag_patterns = [r'\[URL=\'(.*?)\'\]|\[/URL\]']
+        self.bbcode_tag_patterns = [r'\[URL=\'(.*?)\'\]|\[/URL\]', '[URL]']
         self.regex_patterns = [r'(?i)(\b\w*)bca(\w*\b)']
 
     def get_keywords_from_file(self):

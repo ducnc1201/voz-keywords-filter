@@ -65,8 +65,10 @@
             let outputText = document.getElementById("outputText");
 
             // Remove [URL='...'] and [/URL] matches
-            const regex = /\[URL='(.*?)'\]|\[\/URL\]/g;
-            inputText = inputText.replace(regex, '');
+            const regex = [/\[URL='(.*?)'\]|\[\/URL\]/g, '[URL]'];
+            for (let r of regex) {
+                inputText = inputText.replace(r, '');
+            }
 
             let str = inputText;
 
