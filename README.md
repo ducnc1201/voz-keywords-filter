@@ -13,7 +13,6 @@ Follow these steps to use the script:
 1. Check for dependencies:
 - Linux or MacOS users generally don't need any additional packages, as they work well with UTF8 encoding.
 - Windows users, on the other hand, need to install pywin32.
-- Alternatively, you can visit https://f7b6h9.github.io/voz-keywords-filter/ and avoid any Python-related concerns 👀
 
 2. Copy the BBcode
 - Locate the "Toggle BB code" button on the editor toolbar.
@@ -31,3 +30,5 @@ Follow these steps to use the script:
 3. Run the remover.py script or paste the BBcode on the webpage to obtain the edited BBcode.
 
 That's it! The script will remove the URL tags and filter the keywords for you. Now you can paste the filtered content into the forum's editor without worrying about being flagged.
+
+Alternatively, you can visit https://f7b6h9.github.io/voz-keywords-filter/ and avoid any Python-related concerns 👀
