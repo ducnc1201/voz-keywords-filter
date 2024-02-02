@@ -57,8 +57,10 @@
         }
 
         function processText() {
-            let editableBox = document.getElementById("editableBox");
-            let htmlContent = editableBox.innerHTML;
+            let inputBox = document.getElementById("inputBox");
+            let outputBox = document.getElementById("outputBox");
+
+            let htmlContent = inputBox.innerHTML;
 
             // Remove anchor tags and keep only text content
             const anchorRegex = /<a\b[^>]*>(.*?)<\/a>/g;
@@ -71,28 +73,27 @@
             });
 
             // insert separator between each character of the keywords
-
             const keywords = [
-            'công an',
-            'Công an',
-            'Công An',
-            'CÔNG AN',
-            'quân đội',
-            'Quân đội',
-            'Quân Đội',
-            'QUÂN ĐỘI',
-            'thủ tướng',
-            'Thủ tướng',
-            'Thủ Tướng',
-            'THỦ TƯỚNG',
-            'hiếp dâm',
-            'Hiếp dâm',
-            'Hiếp Dâm',
-            'HIẾP DÂM',
-            ]
+                'công an',
+                'Công an',
+                'Công An',
+                'CÔNG AN',
+                'quân đội',
+                'Quân đội',
+                'Quân Đội',
+                'QUÂN ĐỘI',
+                'thủ tướng',
+                'Thủ tướng',
+                'Thủ Tướng',
+                'THỦ TƯỚNG',
+                'hiếp dâm',
+                'Hiếp dâm',
+                'Hiếp Dâm',
+                'HIẾP DÂM',
+            ];
 
             for (let kw of keywords) {
-                htmlContent = htmlContent.replace(kw, insertSeparator(kw));
+                htmlContent = htmlContent.replace(new RegExp(kw, 'g'), insertSeparator(kw));
             }
 
             outputBox.innerHTML = htmlContent;
