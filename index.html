@@ -95,7 +95,7 @@
                 htmlContent = htmlContent.replace(kw, insertSeparator(kw));
             }
 
-            editableBox.innerHTML = htmlContent;
+            outputBox.innerHTML = htmlContent;
         }
 
         function copyOutput() {
@@ -112,8 +112,8 @@
 </head>
 <body>
     <h1>Keyword Processing</h1>
-    <div id="inputBox" class="input-box" contenteditable="true" placeholder="Paste your HTML content here..."></div>
-    <div id="outputBox" class="output-box" oninput="processText()"></div>
+    <div id="inputBox" class="input-box" contenteditable="true" oninput="processText()" placeholder="Paste your HTML content here..."></div>
+    <div id="outputBox" class="output-box"></div>
     <button class="copy-btn" onclick="copyOutput()">Copy Processed Content</button>
 </body>
 </html>
