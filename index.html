@@ -99,9 +99,9 @@
         }
 
         function copyOutput() {
-            let editableBox = document.getElementById("editableBox");
+            let outputBox = document.getElementById("outputBox");
             let range = document.createRange();
-            range.selectNode(editableBox);
+            range.selectNode(outputBox);
             window.getSelection().removeAllRanges();
             window.getSelection().addRange(range);
             document.execCommand("copy");
