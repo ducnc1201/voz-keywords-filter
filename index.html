@@ -93,7 +93,9 @@
             ];
 
             for (let kw of keywords) {
-                htmlContent = htmlContent.replace(new RegExp(kw, 'g'), insertSeparator(kw));
+                let replacedKw = insertSeparator(kw);
+                const kwRegex = new RegExp(kw, 'g');
+                htmlContent = htmlContent.replace(kwRegex, replacedKw);
             }
 
             outputBox.innerHTML = htmlContent;
