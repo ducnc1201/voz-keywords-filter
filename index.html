@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voz Keyword Processing</title>
     <style>
         body {
@@ -12,23 +14,13 @@
             margin-bottom: 20px;
         }
 
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        textarea {
+        .editable-box {
             width: 100%;
-            height: 150px;
-            padding: 5px;
+            height: 400px; /* You can adjust the height as needed */
             border: 1px solid #ccc;
-            resize: vertical;
-        }
-
-        .btn-container {
             margin-top: 10px;
-            text-align: center;
+            padding: 10px;
+            overflow-y: auto;
         }
 
         .copy-btn {
@@ -43,87 +35,40 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin-top: 10px;
         }
 
         .copy-btn:hover {
             background-color: #45a049;
         }
-
-        @media (max-width: 480px) {
-            textarea {
-                height: 100px;
-            }
-        }
     </style>
     <script>
-        function insertSeparator(word) {
-            return [...word].join('឴');
-        }
-
         function processText() {
-            let inputText = document.getElementById("inputText").value;
-            let outputText = document.getElementById("outputText");
+            let editableBox = document.getElementById("editableBox");
+            let htmlContent = editableBox.innerHTML;
 
-            // Remove [URL='...'] and [/URL] matches
-            const regex = [/\[URL='(.*?)'\]|\[\/URL\]/g, '[URL]'];
-            for (let r of regex) {
-                inputText = inputText.replace(r, '');
-            }
+            // Remove anchor tags and keep only text content
+            const anchorRegex = /<a\b[^>]*>(.*?)<\/a>/g;
+            htmlContent = htmlContent.replace(anchorRegex, '$1');
 
-            let str = inputText;
-
-            // Find words containing 'bca' and replace 'bca' with '***'
-            const wordRegex = /\b\w*bca\w*\b/gi;
-            str = str.replace(wordRegex, function(match) {
-                return match.replace(/bca/gi, 'b឴ca');
-            });
-
-            const kws = [
-                'công an',
-                'Công an',
-                'Công An',
-                'CÔNG AN',
-                'quân đội',
-                'Quân đội',
-                'Quân Đội',
-                'QUÂN ĐỘI',
-                'thủ tướng',
-                'Thủ tướng',
-                'Thủ Tướng',
-                'THỦ TƯỚNG',
-                'hiếp dâm',
-                'Hiếp dâm',
-                'Hiếp Dâm',
-                'HIẾP DÂM',
-                // add more keywords here
-            ];
-            for (let kw of kws) {
-                let repl = insertSeparator(kw);
-                // replace all occurrences of kw with repl with exact match
-                const kwRegex = new RegExp(kw, 'g');
-                str = str.replace(kwRegex, repl);
-            }
-
-            outputText.value = str;
+            editableBox.innerHTML = htmlContent;
         }
 
         function copyOutput() {
-            let outputText = document.getElementById("outputText");
-            outputText.select();
+            let editableBox = document.getElementById("editableBox");
+            let range = document.createRange();
+            range.selectNode(editableBox);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
             document.execCommand("copy");
+            window.getSelection().removeAllRanges();
             //alert("Output copied to clipboard!");
         }
     </script>
 </head>
 <body>
-   <h1>Keyword Processing</h1>
-    <label for="inputText">Enter text:</label>
-    <textarea id="inputText" rows="4" cols="50" oninput="processText()"></textarea>
-    <br>
-    <label for="outputText">Output:</label>
-    <textarea id="outputText" rows="4" cols="50" readonly></textarea>
-    <div class="btn-container">
-        <button class="copy-btn" onclick="copyOutput()">Copy</button>
-    </div>
+    <h1>Keyword Processing</h1>
+    <div id="editableBox" class="editable-box" contenteditable="true" oninput="processText()" placeholder="Paste your HTML content here..."></div>
+    <button class="copy-btn" onclick="copyOutput()">Copy Processed Content</button>
 </body>
 </html>
