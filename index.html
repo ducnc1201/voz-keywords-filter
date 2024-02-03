@@ -95,7 +95,7 @@
             for (let kw of keywords) {
                 let replacedKw = insertSeparator(kw);
                 const kwRegex = new RegExp(kw, 'g');
-                htmlContent = htmlContent.replace(kwRegex, replacedKw);
+                htmlContent = htmlContent.split(kw).join(replacedKw);
             }
 
             outputBox.innerHTML = htmlContent;
