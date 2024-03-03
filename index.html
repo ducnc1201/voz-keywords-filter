@@ -56,6 +56,7 @@
             return [...word].join('឴');
         }
 
+
         function processText() {
             let inputBox = document.getElementById("inputBox");
             let outputBox = document.getElementById("outputBox");
@@ -64,7 +65,15 @@
 
             // Remove anchor tags and keep only text content
             const anchorRegex = /<a\b[^>]*>(.*?)<\/a>/gi;
-            htmlContent = htmlContent.replace(anchorRegex, '$1');
+            htmlContent = htmlContent.replace(anchorRegex, function(match, p1) {
+                // Remove the "href" attribute from anchor tags with the class name "link-inline-content"
+                if (match.includes('class="link-inline-content"')) {
+                    return `<span>${p1}</span>`; // Replace anchor tag with span to keep text content
+                } else {
+                    return p1; // Keep the original text content if it's not a link with the specified class
+                }
+            });
+
 
             // Find words containing 'bca' and replace 'bca' with 'b឴ca'
             const wordRegex = /\b\w*bca\w*\b/gi;
