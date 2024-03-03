@@ -63,7 +63,7 @@
             let htmlContent = inputBox.innerHTML;
 
             // Remove anchor tags and keep only text content
-            const anchorRegex = /<a\b[^>]*>(.*?)<\/a>/g;
+            const anchorRegex = /<a\b[^>]*>(.*?)<\/a>/gi;
             htmlContent = htmlContent.replace(anchorRegex, '$1');
 
             // Find words containing 'bca' and replace 'bca' with 'b឴ca'
