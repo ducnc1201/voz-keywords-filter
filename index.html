@@ -56,30 +56,15 @@
             return [...word].join('឴');
         }
 
-
         function processText() {
             let inputBox = document.getElementById("inputBox");
             let outputBox = document.getElementById("outputBox");
 
             let htmlContent = inputBox.innerHTML;
-            //print htmlContent to console
-            console.log(htmlContent);
 
-            // Create a temporary div element to hold the HTML content
-            let tempDiv = document.createElement("div");
-            tempDiv.innerHTML = htmlContent;
-
-                // Find all anchor tags with the class name "link-inline-content"
-                let linkElements = tempDiv.getElementsByClassName("link-inline-content");
-                for (let i = 0; i < linkElements.length; i++) {
-                    // Get the text content of the anchor tag
-                    let textContent = document.createTextNode(linkElements[i].textContent);
-                    // Replace the anchor tag with its text content
-                    linkElements[i].parentNode.replaceChild(textContent, linkElements[i]);
-                }
-
-            // Get the innerHTML of the temporary div after modifying the anchor tags
-            htmlContent = tempDiv.innerHTML;
+            // Remove anchor tags and keep only text content
+            const anchorRegex = /<a(.*?)href="(.*?)"(.*?)>(.*?)<\/a>/gi;
+            htmlContent = htmlContent.replace(anchorRegex, '$4');
 
             // Find words containing 'bca' and replace 'bca' with 'b឴ca'
             const wordRegex = /\b\w*bca\w*\b/gi;
@@ -109,10 +94,10 @@
 
             for (let kw of keywords) {
                 let replacedKw = insertSeparator(kw);
-                htmlContent = htmlContent.split(kw).join(replacedKw);
+                const kwRegex = new RegExp(kw, 'g');
+                htmlContent = htmlContent.replace(kwRegex, replacedKw);
             }
 
-            // Set the modified HTML content to the output box
             outputBox.innerHTML = htmlContent;
         }
 
@@ -126,7 +111,6 @@
             window.getSelection().removeAllRanges();
             //alert("Output copied to clipboard!");
         }
-        
     </script>
 </head>
 <body>
