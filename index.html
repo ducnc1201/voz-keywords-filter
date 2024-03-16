@@ -65,6 +65,8 @@
             // Remove anchor tags and keep only text content
             const anchorRegex = /<a(.*?)href="(.*?)"(.*?)>(.*?)<\/a>/gi;
             htmlContent = htmlContent.replace(anchorRegex, '$4');
+            const vozAnchorRegex = /<a\s+(?:[^>]*?\s+)?href="([^"]*)"(?:\s+[^>]*?)?>(.*?)<\/a>/gi;
+            htmlContent = htmlContent.replace(vozAnchorRegex, '$2');
 
             // Find words containing 'bca' and replace 'bca' with 'b឴ca'
             const wordRegex = /\b\w*bca\w*\b/gi;
