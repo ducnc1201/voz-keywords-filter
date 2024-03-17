@@ -65,8 +65,6 @@
             // Remove anchor tags and keep only text content
             const anchorRegex = /<a(.*?)href="(.*?)"(.*?)>(.*?)<\/a>/gi;
             htmlContent = htmlContent.replace(anchorRegex, '$4');
-            const vozAnchorRegex = /<a\s+(?:[^>]*?\s+)?href="([^"]*)"(?:\s+[^>]*?)?>(.*?)<\/a>/gi;
-            htmlContent = htmlContent.replace(vozAnchorRegex, '$2');
 
             // Find words containing 'bca' and replace 'bca' with 'b឴ca'
             const wordRegex = /\b\w*bca\w*\b/gi;
@@ -104,6 +102,7 @@
         }
 
         function copyOutput() {
+            // Copy the processed content to clipboard
             let outputBox = document.getElementById("outputBox");
             let range = document.createRange();
             range.selectNode(outputBox);
@@ -111,7 +110,6 @@
             window.getSelection().addRange(range);
             document.execCommand("copy");
             window.getSelection().removeAllRanges();
-            //alert("Output copied to clipboard!");
         }
     </script>
 </head>
